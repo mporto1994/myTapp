@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "es6",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "emitDecoratorMetadata": true,
+      "forceConsistentCasingInFileNames": true,
+      "experimentalDecorators":true,
+      "outDir": "./dist",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "declaration": true,
+      "sourceMap": true
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
+  }

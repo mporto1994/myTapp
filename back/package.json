@@ -1,0 +1,38 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx tsx src/index.ts",
+    "create-db": "docker run -d --name my-postgres-db -e POSTGRES_USER=mytapp -e POSTGRES_PASSWORD=mytapp1234 -e POSTGRES_DB=mytapp -p 5433:5432 postgres"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.14.10",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "commonjs": "^0.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.12.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20",
+    "typescript": "^5.4.5",
+    "uuidv4": "^6.2.13"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/body-parser": "^1.19.5",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "ts-node": "10.7.0",
+    "tsx": "^4.16.2",
+    "typescript": "4.5.2"
+  }
+}
