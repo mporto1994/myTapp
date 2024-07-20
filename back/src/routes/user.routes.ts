@@ -10,7 +10,7 @@ import userListOneController from "../controllers/users/userListOne.controller.j
 const routes = Router();
 
 export const userRoutes = () => {
-    routes.post("/", userCreateController);
+    routes.post("/register", userCreateController);
     routes.post("/login", userLoginController);
 
     routes.get("/me/:id", authUserMiddleware, userListOneController);

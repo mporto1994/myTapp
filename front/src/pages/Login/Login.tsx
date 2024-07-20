@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Login.style.css';
+import { LoginContainer, Logo, LoginForm, Input, ButtonContainer, Button, ErrorMessage, InputBox } from './Login.styles';
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -26,27 +26,32 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className="login-container">
-            <form className="login-form" onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Senha"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Login</button>
-                <button type="button" onClick={handleRegisterClick}>Registrar</button>
-                {error && <p className="error-message">{error}</p>}
-            </form>
-        </div>
+        <LoginContainer>
+            <Logo src="https://sede.mytapp.com.br/images/logo-bubble.svg" alt="Logo" />
+            <LoginForm onSubmit={handleSubmit}>
+                <InputBox>
+                    <Input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <Input
+                        type="password"
+                        placeholder="Senha"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </InputBox>
+                <ButtonContainer>
+                    <Button type="submit" primary>Login</Button>
+                    <Button type="button" onClick={handleRegisterClick}>Registrar</Button>
+                </ButtonContainer>
+                {error && <ErrorMessage>{error}</ErrorMessage>}
+            </LoginForm>
+        </LoginContainer>
     );
 };
 

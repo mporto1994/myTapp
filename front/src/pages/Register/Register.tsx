@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Register.style.css';
+import { RegisterContainer, RegisterForm, Input, Button, BackButton, ErrorMessage, Title, InputBox, ButtonContainer } from './Register.styles';
+import { FiArrowLeft } from 'react-icons/fi';
 
 const Register: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -28,42 +29,54 @@ const Register: React.FC = () => {
         }
     };
 
-    return (
-        <div className="register-container">
-            <form className="register-form" onSubmit={handleSubmit}>
-                <input
-                    type="nome"
-                    placeholder="Nome"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                />
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
+    const handleBackClick = () => {
+        navigate('/login');
+    };
 
-                <input
-                    type="password"
-                    placeholder="Senha"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Confirme a senha"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Registrar</button>
-                {error && <p className="error-message">{error}</p>}
-            </form>
-        </div>
+    return (
+        <RegisterContainer>
+            <Title>Registro de Usuário</Title>
+            <RegisterForm onSubmit={handleSubmit}>
+                <InputBox>
+                    <Input
+                        type="text"
+                        placeholder="Nome"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                    <Input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <Input
+                        type="password"
+                        placeholder="Senha"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <Input
+                        type="password"
+                        placeholder="Confirme a senha"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                    />
+                </InputBox>
+                <ButtonContainer>
+                    <Button primary type="submit">Registrar</Button>
+                    <BackButton onClick={handleBackClick}>
+                        <FiArrowLeft style={{ marginRight: '8px' }} />
+                        Voltar
+                    </BackButton>
+                </ButtonContainer>
+                {error && <ErrorMessage>{error}</ErrorMessage>}
+            </RegisterForm>
+        </RegisterContainer>
     );
 };
 
