@@ -16,8 +16,13 @@ const Login: React.FC = () => {
             const response = await axios.post<{ token: string; }>(backendUrl, { email, password });
             localStorage.setItem('token', response.data.token);
             navigate('/beers');
-        } catch (err) {
-            setError('Usuário ou senha incorretos.');
+        } catch (err: any) {
+            if (err.response.data.Erro) {
+                setError('Usuário não encontrado.');
+            }
+            else {
+                setError('Usuário ou senha incorretos.');
+            }
         }
     };
 

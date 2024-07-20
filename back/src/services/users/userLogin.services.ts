@@ -5,6 +5,7 @@ import { User } from "../../entities/user.entity.js";
 import { IUserLogin } from "../../interfaces/user";
 import bcrypt from "bcrypt";
 import Jwt from "jsonwebtoken";
+import { AppError } from "../../errors/appError.js";
 
 const userLoginService = async ({ email, password }: IUserLogin) => {
 
@@ -15,7 +16,7 @@ const userLoginService = async ({ email, password }: IUserLogin) => {
     const account = users.find(user => user.email === email);
 
     if (!account) {
-        return "User not found";
+        throw new AppError(404, "User not found");
     }
     if (!bcrypt.compareSync(password, account.password)) {
         return "Invalid login or password";
